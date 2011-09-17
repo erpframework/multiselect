@@ -1,5 +1,7 @@
 /* jquery.ui.muliselect.js
  *
+ * URL: http://corydorning.com/projects/multiselect
+ *
  * @author: Cory Dorning
  * @modified: 08/25/2011
  *
