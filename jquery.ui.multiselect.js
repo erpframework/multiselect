@@ -15,7 +15,7 @@
  *
  */
 
-(function($) {
+;(function($) {
   $.widget('ui.multiselect', {
     _version: 0.1,
 
