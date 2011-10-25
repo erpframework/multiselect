@@ -82,7 +82,7 @@
               self.button.trigger('click');
             });
 
-      self.button = $('<button>')
+      self.button = $('<div>')
         .insertAfter($input)
         .button({
           icons: {
