@@ -119,6 +119,12 @@
           paddingRight: '20px'
         });
       }
+      
+      $.each(items, function(i, o) {
+        if (o.option.selected) {
+          self.select(i);
+        }
+      });
 
     }, // _create
 
