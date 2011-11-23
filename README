@@ -53,3 +53,8 @@ scroll: sets the height of the dropdown options before scrolling (default is 0, 
     scroll: 400
   });
 </script>
+
+License
+-------------------
+The multiselect plugin is offered under the Creative Commons Zero license:
+http://creativecommons.org/publicdomain/zero/1.0/
