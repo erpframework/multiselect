@@ -1,8 +1,5 @@
 /* multiselect README
  *
- * Last modified by: Cory Dorning
- * Last modified on: 09/15/11
- 
  * multiselect is a jQuery UI plugin that
  * transforms a form select combobox into
  * a dropdown menu, that utilizes YOUR
@@ -10,7 +7,7 @@
  *
  */
 
-Requiements
+Requirements
 ------------------
 
 To use multiselect, it is recommended that you use jQuery
@@ -39,18 +36,38 @@ The easiest way to create the multiselect widget is to just call it on a &lt;sel
 
 Multiselect w/ Options
 --------------------
+change: callback function for when an item is selected or deselected
+deselect: callback function for when an item is deselected
 label: sets the label for the dropdown widget (default is '-- Select Option --')
 minWidth: sets the minimum width of the dropdown widget (default is 200)
 maxWidth: sets the maximum width of the dropwdown before wrapping (no default set)
 scroll: sets the height of the dropdown options before scrolling (default is 0, no scrolling)
+select: callback function for when an item is selected
 
 <!-- set your options -->
 <script>
+  // callbacks
+  function change(el) {
+    console.log(this, 'changed');
+  }
+
+  function deselect() {
+    console.log(this, 'deselected');
+  }
+
+  function select() {
+    console.log(this, 'selected');
+  }
+
+  // multiselect w/ options
   $('select').multiselect({
+    change: change,
+    deselect: deselect,
     label: 'Select Your Options', // default is '-- Select Option --'
     minWidth: 300, // default is 200
     maxWidth: 300, // no default max width
-    scroll: 400
+    scroll: 400,
+    select: select
   });
 </script>
 
