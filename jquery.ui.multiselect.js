@@ -3,7 +3,7 @@
  * URL: http://corydorning.com/projects/multiselect
  *
  * @author: Cory Dorning
- * @modified: 08/25/2011
+ * @modified: 02/27/2012
  *
  * Multiselect is a jQuery UI widget that transforms a <select>
  * box to provide a better User Experience when you need to select
@@ -17,16 +17,19 @@
 
 ;(function($) {
   $.widget('ui.multiselect', {
-    _version: 0.1,
+    _version: 0.2,
 
-    version: function() { return this._version },
+    version: function() { return this._version; },
   
     // default options
     options: {
+      change: function(){},
+      deselect: function() {},
       label: '-- Select --',
       minWidth: 200,
       maxWidth: null,
-      scroll: 0
+      scroll: 0,
+      select: function() {}
     },
 
     items: [],
@@ -40,7 +43,7 @@
               value: $(this).text(),
               option: this // this stores a reference of the option element it belongs to
             };
-            }).get();
+          }).get();
 
       var $input = self.input = $('<div class="ui-multiselect-input" />')
             .attr({
@@ -170,6 +173,12 @@
         .appendTo(self.input);
         
         self.input.children('.ui-multiselect-label').hide();
+        
+        // call function on change
+        self.options.change.call(item.option);
+        
+        // call function on select
+        self.options.select.call(item.option);
     }, // select
 
     deselect: function(item) {
@@ -180,6 +189,12 @@
       if (!self.input.children('.ui-multiselect-item').length) {
         self.input.children('.ui-multiselect-label').show();
       }
+      
+      // call function on change
+        self.options.change.call(item.option);
+        
+        // call function on deselect
+        self.options.deselect.call(item.option);
     } // deselect
 
   }); // $.widget('multiselect')
